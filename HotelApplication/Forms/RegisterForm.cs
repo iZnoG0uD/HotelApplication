@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HotelApplication.Handler;
+using System;
 using System.Windows.Forms;
 
 namespace HotelApplication.Forms
@@ -17,14 +11,13 @@ namespace HotelApplication.Forms
             InitializeComponent();
         }
 
-        private void RegisterForm_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            HandlerAuth auth = new HandlerAuth();
+            string date = dateTimePicker1.Value.Date.ToString().Split()[0].Replace('.', '/');
+            var message = auth.Register(textBox2.Text, textBox3.Text, textBox1.Text, date);
+            MessageBox.Show(message);
+            if (message == "Вы успеншо зарегались.") Close();
         }
     }
 }

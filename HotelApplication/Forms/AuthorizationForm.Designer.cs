@@ -76,6 +76,7 @@
             this.setIn.TabIndex = 4;
             this.setIn.Text = "Войти";
             this.setIn.UseVisualStyleBackColor = true;
+            this.setIn.Click += new System.EventHandler(this.setIn_Click);
             // 
             // setUp
             // 
@@ -85,6 +86,7 @@
             this.setUp.TabIndex = 5;
             this.setUp.Text = "Регистрация";
             this.setUp.UseVisualStyleBackColor = true;
+            this.setUp.Click += new System.EventHandler(this.setUp_Click);
             // 
             // AuthorizationForm
             // 
