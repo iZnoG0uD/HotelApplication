@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotelApplication.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,31 @@ namespace HotelApplication.Forms
         public PrivateOfficeForm()
         {
             InitializeComponent();
+            label1.Text += User.FullName;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OrderForm orderForm = new OrderForm();
+            Hide();
+            orderForm.ShowDialog();
+            Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            HistoryForm historyForm = new HistoryForm();
+            Hide();
+            historyForm.ShowDialog();
+            Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ListRoomsForm listRoomsForm = new ListRoomsForm();
+            Hide();
+            listRoomsForm.ShowDialog();
+            Show();
         }
     }
 }

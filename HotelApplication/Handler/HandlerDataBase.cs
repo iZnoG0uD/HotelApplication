@@ -9,56 +9,67 @@ namespace HotelApplication.Handler
         /// <summary>
         ///     SqlDataReader
         /// </summary>
-        public SqlDataReader DataReader { get; set; }
+        private protected SqlDataReader DataReader { get; set; }
 
         /// <summary>
         ///     SqlCommand
         /// </summary>
-        public SqlCommand Command { get; set; }
+        private protected SqlCommand Command { get; set; }
 
         /// <summary>
         ///     SqlDataAdapter
         /// </summary>
-        public SqlDataAdapter DataAdapter { get; set; }
+        private protected SqlDataAdapter DataAdapter { get; set; }
 
         /// <summary>
         ///     DataSet
         /// </summary>
-        public DataSet DataSet { get; set; }
+        private protected DataSet DataSet { get; set; }
 
         /// <summary>
         ///     SqlBuider
         /// </summary>
-        public SqlCommandBuilder SqlBuilder { get; set; }
+        private protected SqlCommandBuilder SqlBuilder { get; set; }
 
         /// <summary>
         ///     SqlConnection
         /// </summary>
-        public SqlConnection Connection { get; set; }
+        private protected SqlConnection Connection { get; set; }
 
         /// <summary>
         ///     DataGridView
         /// </summary>
-        public DataGridViewRow Row { get; set; }
+        private protected DataGridViewRow Row { get; set; }
 
         /// <summary>
         ///     Строка подключения.
         /// </summary>
-        public readonly string StringConnction = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\heart\source\repos\HotelApplication\HotelApplication\Hoteldb.mdf;Integrated Security=True";
-
-        /// <summary>
-        ///     Sql запрос к базе данных для всех данных.
-        /// </summary>
-        public string SqlDataRequest { get; set; }
+        private protected readonly string StringConnction = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\heart\source\repos\HotelApplication\HotelApplication\Hoteldb.mdf;Integrated Security=True";
 
         /// <summary>
         ///     Sql запрос к базе данных для разных переменных.
         /// </summary>
-        public string SqlRequest { get; set; }
+        private protected string SqlRequest { get; set; }
 
         /// <summary>
         ///     Локальная DataGridView для заполнения ее данными.
         /// </summary>
-        public DataGridView Data { get; set; }
+        private protected DataGridView Data { get; set; }
+
+
+        /// <summary>
+        ///     Выполняет запрос.
+        /// </summary>
+        /// <returns>Переменную по запросу</returns>
+        private protected string RequestSql()
+        {
+            string value = string.Empty;
+            Command = new SqlCommand(SqlRequest, Connection);
+            DataReader = Command.ExecuteReader();
+            if (DataReader.Read())
+                value = DataReader[0].ToString();
+            DataReader.Close();
+            return value;
+        }
     }
 }

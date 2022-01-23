@@ -100,7 +100,11 @@
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Handler\HandlerAuth.cs" />
+    <Compile Include="Handler\HandlerBookRooms.cs" />
     <Compile Include="Handler\HandlerDataBase.cs" />
+    <Compile Include="Handler\HandlerHistory.cs" />
+    <Compile Include="Handler\HandlerOrder.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AuthorizationForm.resx">

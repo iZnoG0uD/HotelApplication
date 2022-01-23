@@ -1,11 +1,5 @@
-﻿using System;
+﻿using HotelApplication.Handler;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HotelApplication.Forms
@@ -15,6 +9,18 @@ namespace HotelApplication.Forms
         public HistoryForm()
         {
             InitializeComponent();
+            SetHistory();
+        }
+
+        /// <summary>
+        ///     Вставляет всю историю.
+        /// </summary>
+        public void SetHistory()
+        {
+            HandlerHistory handlerHistory = new HandlerHistory();
+            List<string[]> history = handlerHistory.GetHistory();
+            foreach (var historyItem in history)
+                dataGridView1.Rows.Add(historyItem);
         }
     }
 }

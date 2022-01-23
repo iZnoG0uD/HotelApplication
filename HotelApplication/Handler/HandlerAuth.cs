@@ -1,16 +1,11 @@
-﻿using System;
+﻿using HotelApplication.Model;
+using System;
 using System.Data.SqlClient;
 
 namespace HotelApplication.Handler
 {
     public class HandlerAuth : HandlerDataBase
     {
-        public HandlerAuth()
-        {
-            Connection = new SqlConnection(StringConnction);
-            Connection.Open();
-        }
-        
         /// <summary>
         ///     Проверяет пользователя, если он существует то входит в программу.
         /// </summary>
@@ -18,31 +13,22 @@ namespace HotelApplication.Handler
         {
             try
             {
-                SqlRequest = "SELECT Id FROM UserInfo WHERE Login=N'" + login + "'";
-                string idClient = RequestSql();
-                if (idClient != null) return "Вы успешно вошли!";
+                Connection = new SqlConnection(StringConnction);
+                Connection.Open();
+                SqlRequest = "SELECT FullName FROM UserInfo WHERE Login=N'" + login + "' AND Password ='" + password + "'";
+                User.FullName = RequestSql();
+                if (User.FullName != null) return "Вы успешно вошли!";
                 else return "Данные не верны";
             }
             catch (Exception ex)
             {
                 return ex.ToString();
+
             }
-        }
-
-
-        /// <summary>
-        ///     Выполняет запрос.
-        /// </summary>
-        /// <returns>Переменную по запросу</returns>
-        private string RequestSql()
-        {
-            string value = string.Empty;
-            Command = new SqlCommand(SqlRequest, Connection);
-            DataReader = Command.ExecuteReader();
-            if (DataReader.Read())
-                value = DataReader[0].ToString();
-            DataReader.Close();
-            return value;
+            finally
+            {
+                Connection.Close();
+            }
         }
 
         /// <summary>
@@ -52,28 +38,27 @@ namespace HotelApplication.Handler
         {
             try
             {
+                Connection = new SqlConnection(StringConnction);
+                Connection.Open();
+
                 SqlRequest = "SELECT Id FROM UserInfo WHERE Login=N'" + login + "'";
                 string idClient = RequestSql();
                 if (idClient != "") return "Такой логин уже существует";
-            }
-            catch (Exception ex)
-            {
-                return ex.ToString();
-            }
 
-            try
-            {
                 SqlRequest = "INSERT INTO UserInfo (FullName, Login, Password, Birthday) " +
-               "VALUES (N'" + fullName + "', '" + login + "', '" + password + "', '" + date + "')";
+               "VALUES (N'" + fullName + "', '" + login + "', '" + password + "', CONVERT(datetime, '" + date + "', 104))";
                 Command = new SqlCommand(SqlRequest, Connection);
                 Command.ExecuteNonQuery();
                 return "Вы успеншо зарегались.";
             }
-            catch
+            catch (Exception ex)
             {
                 return "Введите все данные!";
             }
-
+            finally
+            {
+                Connection.Close();
+            }
         }
     }
 }
