@@ -1,6 +1,4 @@
-﻿using System.Data;
-using System.Data.SqlClient;
-using System.Windows.Forms;
+﻿using System.Data.SqlClient;
 
 namespace HotelApplication.Handler
 {
@@ -16,20 +14,6 @@ namespace HotelApplication.Handler
         /// </summary>
         private protected SqlCommand Command { get; set; }
 
-        /// <summary>
-        ///     SqlDataAdapter
-        /// </summary>
-        private protected SqlDataAdapter DataAdapter { get; set; }
-
-        /// <summary>
-        ///     DataSet
-        /// </summary>
-        private protected DataSet DataSet { get; set; }
-
-        /// <summary>
-        ///     SqlBuider
-        /// </summary>
-        private protected SqlCommandBuilder SqlBuilder { get; set; }
 
         /// <summary>
         ///     SqlConnection
@@ -37,25 +21,14 @@ namespace HotelApplication.Handler
         private protected SqlConnection Connection { get; set; }
 
         /// <summary>
-        ///     DataGridView
-        /// </summary>
-        private protected DataGridViewRow Row { get; set; }
-
-        /// <summary>
         ///     Строка подключения.
         /// </summary>
-        private protected readonly string StringConnction = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\heart\source\repos\HotelApplication\HotelApplication\Hoteldb.mdf;Integrated Security=True";
+        private protected readonly string StringConnction = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\admin\source\repos\HotelApplication\HotelApplication\Hoteldb.mdf;Integrated Security=True";
 
         /// <summary>
         ///     Sql запрос к базе данных для разных переменных.
         /// </summary>
         private protected string SqlRequest { get; set; }
-
-        /// <summary>
-        ///     Локальная DataGridView для заполнения ее данными.
-        /// </summary>
-        private protected DataGridView Data { get; set; }
-
 
         /// <summary>
         ///     Выполняет запрос.

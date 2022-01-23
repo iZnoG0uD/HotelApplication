@@ -17,7 +17,7 @@ namespace HotelApplication.Handler
                 Connection.Open();
                 SqlRequest = "SELECT FullName FROM UserInfo WHERE Login=N'" + login + "' AND Password ='" + password + "'";
                 User.FullName = RequestSql();
-                if (User.FullName != null) return "Вы успешно вошли!";
+                if (User.FullName != "") return "Вы успешно вошли!";
                 else return "Данные не верны";
             }
             catch (Exception ex)

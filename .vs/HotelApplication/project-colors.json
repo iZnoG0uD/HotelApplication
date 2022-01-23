@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "c45ddcd3-5325-45c0-bde7-8f035ffaef20": {
+      "ProjectGuid": "c45ddcd3-5325-45c0-bde7-8f035ffaef20",
+      "DisplayName": "HotelApplication",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Прочие файлы",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 1
+}
